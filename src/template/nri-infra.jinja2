@@ -1,0 +1,24 @@
+{
+    "name": "com.newrelic.nri-sensors",
+    "protocol_version": "3",
+    "integration_version": "0.0.1",
+    "data": [
+        {
+            "metrics": [
+                {
+                    "event_type": "{{event_type}}",
+                    "temp": "{{temperature}}",
+                    "integration_name": "com.newrelic.nri-sensors",
+                    "integration_version": "0.0.1"
+                },
+                {
+                    "event_type": "lmsensors",
+                    "temper.Hostname": "{{hostname}}",
+                    "temper.releaseHash": "{{release}}"
+                }
+            ],
+            "inventory": {},
+            "events": []
+        }
+    ]
+}
