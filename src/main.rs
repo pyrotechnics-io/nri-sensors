@@ -24,7 +24,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .with_level(opts.debugmode)
         .init()
         .unwrap();
-    log::info!("New Relic LM Sensors");
+    log::debug!("New Relic LM Sensors");
 
     log::debug!("Polling at {} second intervals", &opts.frequency);
 
@@ -34,7 +34,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         log::debug!("Discovered {} temperature metrics", data.len());
 
         statsgen::dump(data);
+        log::debug!("Stats generation complete");
 
+        if opts.frequency == 0 {
+            return Ok(())
+        }
         thread::sleep(millis);
     }
 }

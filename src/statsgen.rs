@@ -23,5 +23,5 @@ pub fn dump(stats: Vec<Temperature>) {
         }
     };
 
-    // Write the data out to the integrations folder
+    println!("{}", data);
 }
