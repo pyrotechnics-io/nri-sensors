@@ -30,7 +30,7 @@ fn list_sensors() -> Result<Vec<Temperature>, Box<dyn std::error::Error>> {
             for sub_feature in feature.sub_feature_iter() {
                 if let Ok(value) = sub_feature.value() {
                     if re.is_match(&sub_feature.to_string().as_str()) {
-                        values.push(Temperature{chip: name.to_string().to_owned(), temperature: value.raw_value()});
+                        values.push(Temperature{chip: feature.to_string().to_owned(), temperature: value.raw_value()});
                     }
 
                     log::trace!("        {}: {}", sub_feature, value);

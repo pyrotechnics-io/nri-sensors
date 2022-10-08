@@ -1,10 +1,13 @@
 use crate::sensors::Temperature;
 use hostname;
 use tera;
+use tera_text_filters::snake_case;
+
 use log;
 
 pub fn dump(stats: Vec<Temperature>) {
     let mut tera = tera::Tera::default();
+    tera.register_filter("snake_case", snake_case);
     let mut ctx = tera::Context::default();
     let hostname = match hostname::get() {
         Ok(h) => h.to_string_lossy().into_owned(),

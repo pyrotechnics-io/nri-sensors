@@ -7,7 +7,7 @@
             "metrics": [
                 {% for sample in samples -%}
                 {
-                    "event_type": "{{sample.chip}}",
+                    "event_type": "host.lmsensors.{{sample.chip | snake_case}}",
                     "temp": "{{sample.temperature}}",
                     "integration_name": "com.newrelic.nri-sensors",
                     "integration_version": "0.0.1"
@@ -15,8 +15,8 @@
                 {% endfor -%}
                 {
                     "event_type": "lmsensors",
-                    "temper.Hostname": "{{hostname}}",
-                    "temper.releaseHash": "{{release}}"
+                    "lmsensors.Hostname": "{{hostname}}",
+                    "lmsensors.releaseHash": "{{release}}"
                 }
             ],
             "inventory": {},
