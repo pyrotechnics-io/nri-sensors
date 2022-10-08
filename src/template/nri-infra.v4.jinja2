@@ -1,0 +1,37 @@
+{
+  "protocol_version":"4",
+  "integration":{
+    "name":"com.newrelic.nri-sensors",
+    "version":"0.0.1"
+  },
+  "data":[
+    {
+      "entity":{
+        "name":"{{hostname}}",
+        "type":"temperature",
+        "displayName":"lmsensors",
+        "metadata":{
+            "releaseHash": "{{release}}"
+        }
+      },
+      "metrics":[
+        {% for sample in samples -%}
+        {
+          "name":"host.temperature.{{sample.chip | snake_case}}",
+          "type":"gauge",
+          "value":{{sample.temperature}}, 
+          "attributes":{}
+        },
+        {% endfor -%}
+        {
+            "name": "host.lmsensors",
+            "type": "count",
+            "value": {{samples | length}},
+            "attributes": {}
+        }
+      ],
+      "inventory":{},
+      "events":[]
+    }
+  ]
+}
