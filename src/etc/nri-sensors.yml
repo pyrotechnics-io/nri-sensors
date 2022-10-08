@@ -1,0 +1,4 @@
+integrations:
+  - name: nri-sensors
+    interval: 120s
+    exec: /var/db/newrelic-infra/newrelic-integrations/bin/nri-sensors

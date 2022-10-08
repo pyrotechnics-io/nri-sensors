@@ -2,6 +2,7 @@ use crate::sensors::Temperature;
 use hostname;
 use tera;
 use tera_text_filters::snake_case;
+use minifier::json::minify;
 
 use log;
 
@@ -26,5 +27,5 @@ pub fn dump(stats: Vec<Temperature>) {
         }
     };
 
-    println!("{}", data);
+    println!("{}", minify(data.as_str()));
 }

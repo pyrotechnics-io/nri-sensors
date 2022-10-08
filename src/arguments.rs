@@ -41,7 +41,7 @@ pub fn process_arguments() -> Result<Arguments, &'static str> {
 
     let frequency = matches.value_of("frequency");
     let frequency = match frequency {
-        None => 120,
+        None => 0,
         Some(s) => match s.parse::<u64>() {
             Ok(n) => n,
             Err(_) => return Err("Invalid frequency number"),
