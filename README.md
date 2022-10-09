@@ -21,7 +21,7 @@ This is an on-host integration with New Relic for getting temperature readings v
   ```
   sudo install target/release/nri-sensors /var/db/newrelic-infra/custom-integrations/
   ```
-- Create an on-host integration configuration in  /etc/newrelic-infra/integrations.d/
+- Create an on-host integration configuration in  /etc/newrelic-infra/integrations.d/nri-sensors.yml
   ```
   integrations:
   - name: nri-sensors
@@ -35,3 +35,8 @@ This is an on-host integration with New Relic for getting temperature readings v
   ```
   SELECT latest(temp) FROM lmsensors FACET device WHERE hostname = 'myhostname' SINCE 1 hour ago TIMESERIES 1 minute 
   ```
+
+## Screenshot
+
+![image](https://user-images.githubusercontent.com/25926146/194738592-7af3fe38-1695-49d6-8e8f-a283b5285ba3.png)
+
