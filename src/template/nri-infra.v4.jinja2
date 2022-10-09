@@ -1,15 +1,15 @@
 {
   "protocol_version":"4",
   "integration":{
-    "name":"com.newrelic.nri-sensors",
-    "version":"0.0.1"
+    "name":"com.pyrotechnics.nri-sensors",
+    "version":"0.1.0"
   },
   "data":[
     {
       "entity":{
-        "name":"{{hostname}}",
+        "name":"sensors:{{hostname}}",
         "type":"temperature",
-        "displayName":"lmsensors",
+        "displayName":"LmSensors",
         "metadata":{
             "releaseHash": "{{release}}"
         }
@@ -17,14 +17,14 @@
       "metrics":[
         {% for sample in samples -%}
         {
-          "name":"host.temperature.{{sample.chip | snake_case}}",
-          "type":"gauge",
+          "name":"sensors.temperature.{{sample.chip | snake_case}}",
+          "type":"count",
           "value":{{sample.temperature}}, 
           "attributes":{}
         },
         {% endfor -%}
         {
-            "name": "host.lmsensors",
+            "name": "sensors.temperature.invocation",
             "type": "count",
             "value": {{samples | length}},
             "attributes": {}

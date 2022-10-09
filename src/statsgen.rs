@@ -19,7 +19,7 @@ pub fn dump(stats: Vec<Temperature>) {
     ctx.insert("hostname", &hostname);
     ctx.insert("release", env!("BUILD_TAG"));
 
-    let data = match tera.render_str(include_str!("template/nri-infra.v4.jinja2"), &ctx) {
+    let data = match tera.render_str(include_str!("template/nri-infra.jinja2"), &ctx) {
         Ok(t) => t,
         Err(e) => {
             log::error!("Failed tera render: {}", e);

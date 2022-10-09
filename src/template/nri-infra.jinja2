@@ -1,22 +1,24 @@
 {
-    "name": "com.newrelic.nri-sensors",
-    "protocol_version": "3",
-    "integration_version": "0.0.1",
+    "protocol_version":"3",
+    "name":"com.pyrotechnics.nri-sensors",
+    "integration_version":"0.0.1",
     "data": [
         {
             "metrics": [
                 {% for sample in samples -%}
                 {
-                    "event_type": "host.lmsensors.{{sample.chip | snake_case}}",
-                    "temp": "{{sample.temperature}}",
-                    "integration_name": "com.newrelic.nri-sensors",
-                    "integration_version": "0.0.1"
+                    "integration_name": "com.pyrotechnics.nri-sensors",
+                    "integration_version": "0.0.1",
+                    "event_type": "lmsensors",
+                    "device": "{{sample.chip | snake_case}}",
+                    "temp": "{{sample.temperature}}"
                 },
                 {% endfor -%}
                 {
-                    "event_type": "lmsensors",
+                    "event_type": "lmsensorsStatus",
                     "lmsensors.Hostname": "{{hostname}}",
-                    "lmsensors.releaseHash": "{{release}}"
+                    "lmsensors.releaseHash": "{{release}}",
+                    "lmsensors.sample_count": {{samples | length}}
                 }
             ],
             "inventory": {},
