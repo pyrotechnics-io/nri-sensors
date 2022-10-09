@@ -3,7 +3,7 @@
 ## Overview
 This is an on-host integration with New Relic for getting temperature readings via the lm-sensors package.
 
-## Quickstart
+## Installation
 
 ### Steps
 - Install New Relic One along with the Linux infrastructure agent
